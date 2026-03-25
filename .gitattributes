@@ -1,2 +1,17 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Entornos de desarrollo (¡Muy importante para ustedes!)
+.idea/
+.vscode/
+*.swp
+*.iml
+
+# Node / Frontend
+frontend/node_modules/
+frontend/dist/
+
+# Java / Backend / Gradle
+backend/.gradle/
+backend/build/
+backend/out/

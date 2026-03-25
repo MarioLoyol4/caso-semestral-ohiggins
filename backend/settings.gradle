@@ -1,1 +1,4 @@
 rootProject.name = 'caso_semestral'
+include 'academic-service'
+include 'attendance-service'
+include 'bff-service'
