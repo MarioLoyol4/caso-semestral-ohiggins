@@ -23,4 +23,24 @@ public class CursoController {
     public Curso guardar (@RequestBody Curso curso){
         return cursoRepository.save(curso);
     }
+
+    @PutMapping("/{id}")
+    public Curso editar(@PathVariable Long id, @RequestBody Curso cursoActualizado) {
+        return cursoRepository.findById(id)
+                .map(curso -> {
+                    curso.setNivel(cursoActualizado.getNivel());
+                    curso.setLetra(cursoActualizado.getLetra());
+                    curso.setAño(cursoActualizado.getAño());
+                    return cursoRepository.save(curso);
+                })
+                .orElseGet(() -> {
+                    cursoActualizado.setId(id);
+                    return cursoRepository.save(cursoActualizado);
+                });
+    }
+
+    @DeleteMapping("/{id}")
+    public void eliminar(@PathVariable Long id) {
+        cursoRepository.deleteById(id);
+    }
 }
