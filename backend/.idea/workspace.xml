@@ -5,35 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e9ab86dd-a396-4b2b-9ff9-21493e07530c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/academic-service/src/main/java/cl/duoc/colegio/academic/controller/AsignaturaController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/academic-service/src/main/java/cl/duoc/colegio/academic/controller/CursoController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/academic-service/src/main/java/cl/duoc/colegio/academic/controller/EstudianteController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/academic-service/src/main/java/cl/duoc/colegio/academic/controller/NotaController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/academic-service/src/main/java/cl/duoc/colegio/academic/model/Asignatura.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/academic-service/src/main/java/cl/duoc/colegio/academic/model/Curso.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/academic-service/src/main/java/cl/duoc/colegio/academic/model/Estudiante.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/academic-service/src/main/java/cl/duoc/colegio/academic/model/Nota.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/academic-service/src/main/java/cl/duoc/colegio/academic/repository/AsignaturaRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/academic-service/src/main/java/cl/duoc/colegio/academic/repository/CursoRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/academic-service/src/main/java/cl/duoc/colegio/academic/repository/EstudianteRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/academic-service/src/main/java/cl/duoc/colegio/academic/repository/NotaRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/academic-service/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/academic-service/src/main/java/fullstack/caso_semestral/academic/AcademicServiceApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/academic-service/src/main/java/fullstack/caso_semestral/academic/controllers/CursoController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/academic-service/src/main/java/fullstack/caso_semestral/academic/models/Curso.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/academic-service/src/main/java/fullstack/caso_semestral/academic/repositories/CursoRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/academic-service/src/main/java/fullstack/caso_semestral/academic/services/CursoService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/attendance-service/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bff-service/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,22 +24,22 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "MarioLoyol4"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;MarioLoyol4&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/MarioLoyol4/caso-semestral-ohiggins.git",
-    "accountId": "5552592f-32d1-4de9-83b5-33f7d4a2e678"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/MarioLoyol4/caso-semestral-ohiggins.git&quot;,
+    &quot;accountId&quot;: &quot;5552592f-32d1-4de9-83b5-33f7d4a2e678&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 3
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="3DJvuUXQKcEeH2vOf4Iui3OOnU6" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -81,6 +54,7 @@
     "Application.AcademicServiceApplication.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true"
   }
