@@ -5,15 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e9ab86dd-a396-4b2b-9ff9-21493e07530c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/attendance-service/src/main/java/cl/duoc/colegio/attendance/controller/AnotacionController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/attendance-service/src/main/java/cl/duoc/colegio/attendance/controller/AsistenciaController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/attendance-service/src/main/java/cl/duoc/colegio/attendance/model/Anotacion.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/attendance-service/src/main/java/cl/duoc/colegio/attendance/model/Asistencia.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/attendance-service/src/main/java/cl/duoc/colegio/attendance/repository/AnotacionRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/attendance-service/src/main/java/cl/duoc/colegio/attendance/repository/AsistenciaRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/bff-service/src/main/java/cl/duoc/colegio/bff/config/AppConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bff-service/src/main/java/cl/duoc/colegio/bff/controller/DashboardController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/attendance-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/attendance-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bff-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bff-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bff-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bff-service/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,8 +56,10 @@
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Application.AcademicServiceApplication.executor": "Run",
     "Application.AttendanceServiceApplication.executor": "Run",
+    "Application.BffServiceApplication.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "feature/backend-dev",
     "kotlin-language-version-configured": "true"
