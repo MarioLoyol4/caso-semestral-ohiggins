@@ -26,6 +26,6 @@ public class NotaController {
 
     @GetMapping("/estudiante/{id}")
     public List<Nota> listarPorEstudiante(@PathVariable Long id){
-        return notaRepository.findByEstudiante(id);
+        return notaRepository.findByEstudianteId(id);
     }
 }

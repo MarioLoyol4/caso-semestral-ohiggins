@@ -5,11 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e9ab86dd-a396-4b2b-9ff9-21493e07530c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/bff-service/src/main/java/cl/duoc/colegio/bff/config/AppConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bff-service/src/main/java/cl/duoc/colegio/bff/controller/DashboardController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bff-service/src/main/java/cl/duoc/colegio/bff/client/MicroservicioClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/communication-service/src/main/java/cl/duoc/colegio/communication/controller/ComunicadoController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/communication-service/src/main/java/cl/duoc/colegio/communication/controller/MensajeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/communication-service/src/main/java/cl/duoc/colegio/communication/model/Comunicado.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/communication-service/src/main/java/cl/duoc/colegio/communication/model/Mensaje.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/communication-service/src/main/java/cl/duoc/colegio/communication/notificacion/NotifiacionEmail.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/communication-service/src/main/java/cl/duoc/colegio/communication/notificacion/Notificacion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/communication-service/src/main/java/cl/duoc/colegio/communication/notificacion/NotificacionFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/communication-service/src/main/java/cl/duoc/colegio/communication/notificacion/NotificacionPlataforma.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/communication-service/src/main/java/cl/duoc/colegio/communication/repository/ComunicadoRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/communication-service/src/main/java/cl/duoc/colegio/communication/repository/MensajeRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/communication-service/src/main/java/cl/duoc/colegio/communication/service/ComunicadoService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/communication-service/src/main/java/cl/duoc/colegio/communication/service/MensajeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bff-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bff-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/academic-service/src/main/java/cl/duoc/colegio/academic/controller/NotaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/academic-service/src/main/java/cl/duoc/colegio/academic/controller/NotaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/academic-service/src/main/java/cl/duoc/colegio/academic/repository/NotaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/academic-service/src/main/java/cl/duoc/colegio/academic/repository/NotaRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bff-service/src/main/java/cl/duoc/colegio/bff/controller/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bff-service/src/main/java/cl/duoc/colegio/bff/controller/DashboardController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bff-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bff-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/communication-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/communication-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/communication-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/communication-service/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,6 +73,7 @@
     "Application.AcademicServiceApplication.executor": "Run",
     "Application.AttendanceServiceApplication.executor": "Run",
     "Application.BffServiceApplication.executor": "Run",
+    "Application.CommunicationServiceApplication.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",

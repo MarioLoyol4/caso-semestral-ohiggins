@@ -13,6 +13,11 @@
         <module name="academic-service" />
         <module name="attendance-service" />
         <module name="bff-service" />
+      </profile>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
         <module name="communication-service" />
       </profile>
     </annotationProcessing>

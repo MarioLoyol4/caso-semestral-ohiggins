@@ -1,7 +1,9 @@
 package cl.duoc.colegio.bff.controller;
 
+import cl.duoc.colegio.bff.client.MicroservicioClient;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,36 +17,31 @@ import java.util.Map;
 @RequestMapping("/api/bff/dashboard")
 public class DashboardController {
 
-    @Autowired
-    private RestTemplate restTemplate;
+    private final MicroservicioClient client;
 
-    @GetMapping("/estudiante/{id}")
-    @CircuitBreaker(name = "colegioCB", fallbackMethod = "fallbackResumenEstudiante")
-    public Map<String, Object> obtenerResumenEstudiante(@PathVariable Long id) {
-        Map<String, Object> respuestaFinal = new HashMap<>();
+    @Value("${services.academic.url}")
+    private String academicUrl;
 
-        String urlNotas = "http://localhost:8081/api/notas/estudiante/" + id;
-        Object notasDelAlumno = restTemplate.getForObject(urlNotas, Object.class);
+    @Value("${services.attendance.url}")
+    private String attendanceUrl;
 
+    @Value("${services.communication.url}")
+    private String communicationUrl;
 
-        String urlAsistencias = "http://localhost:8082/api/asistencias/estudiante/" + id;
-        Object asistenciaDelAlumno = restTemplate.getForObject(urlAsistencias, Object.class);
-
-        respuestaFinal.put("notas", notasDelAlumno);
-        respuestaFinal.put("historialAsistencias", asistenciaDelAlumno);
-
-        return  respuestaFinal;
+    public DashboardController(MicroservicioClient client) {
+        this.client = client;
     }
 
-    public Map<String, Object> fallbackResumenEstudiante(Long id, Throwable t) {
-        Map<String, Object> respuestaCaida = new HashMap<>();
+    @GetMapping("/estudiante/{id}")
+    public Map<String, Object> obtenerResumenEstudiante(@PathVariable Long id) {
+        Map<String, Object> respuesta = new HashMap<>();
 
-        respuestaCaida.put("mensaje", "Estamos experimentando alta demanda. Algunos datos academicos podrian no estar disponibles en este momento.");
-        respuestaCaida.put("estudianteId", id);
-        respuestaCaida.put("estado", "PARCIALMENTE_DISPONIBLE");
+        respuesta.put("notas", client.llamarSeguro("academic-service", academicUrl + "/api/notas/estudiante/" + id));
 
-        System.out.println("Error capturado por Circuit Breaker: " + t.getMessage());
+        respuesta.put("historialAsistencias", client.llamarSeguro("attendance-service", attendanceUrl + "/api/asistencias/estudiante/" + id));
 
-        return respuestaCaida;
+        respuesta.put("comunicados", client.llamarSeguro("communication-service", communicationUrl + "/api/comunicados"));
+
+        return respuesta;
     }
 }
