@@ -61,6 +61,8 @@ public class DashboardController {
                 client.llamarSeguro("academic-service", academicUrl + "/api/notas/estudiante/" + id));
         respuesta.put("anotaciones" ,
                 client.llamarSeguro("attendance-service", attendanceUrl + "/api/anotaciones/estudiante/" + id));
+        respuesta.put("historialAsistencias",
+                client.llamarSeguro("attendance-service", attendanceUrl + "/api/asistencias/estudiante/" + id));
         respuesta.put("comunicados" ,
                 client.llamarSeguro("communication-service", communicationUrl + "/api/comunicados/destinatario/APODERADOS"));
 

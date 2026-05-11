@@ -5,6 +5,7 @@ import cl.duoc.colegio.academic.model.Apoderado;
 import cl.duoc.colegio.academic.model.Estudiante;
 import cl.duoc.colegio.academic.repository.ApoderadoRepository;
 import cl.duoc.colegio.academic.repository.EstudianteRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -28,6 +29,7 @@ public class ApoderadoController {
     private EstudianteRepository estudianteRepository;
 
     @PostMapping
+    @Transactional
     public ResponseEntity<Apoderado> crear(@RequestBody Apoderado apoderado) {
         apoderado.setPassword(passwordEncoder.encode(apoderado.getPassword()));
         return ResponseEntity.ok(apoderadoRepository.save(apoderado));
@@ -53,19 +55,22 @@ public class ApoderadoController {
     }
 
     @PostMapping("/{apoderadoId}/estudiantes/{estudianteId}")
+    @Transactional
     public ResponseEntity<Apoderado> asignarEstudiante(
             @PathVariable Long apoderadoId,
             @PathVariable Long estudianteId) {
+
         Apoderado apoderado = apoderadoRepository.findById(apoderadoId)
                 .orElseThrow(() -> new RuntimeException("Apoderado no encontrado"));
 
         Estudiante estudiante = estudianteRepository.findById(estudianteId)
                 .orElseThrow(() -> new RuntimeException("Estudiante no encontrado"));
 
-        apoderado.getEstudiantes().add(estudiante);
+        if (!apoderado.getEstudiantes().contains(estudiante)) {
+            apoderado.getEstudiantes().add(estudiante);
+        }
 
         return ResponseEntity.ok(apoderadoRepository.save(apoderado));
-
     }
 
     @DeleteMapping("/{id}")

@@ -6,6 +6,7 @@ import cl.duoc.colegio.academic.model.Estudiante;
 import cl.duoc.colegio.academic.repository.ApoderadoRepository;
 import cl.duoc.colegio.academic.repository.DocenteRepository;
 import cl.duoc.colegio.academic.repository.EstudianteRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -36,6 +37,7 @@ public class AuthAcademicController {
     private PasswordEncoder passwordEncoder;
 
     @PostMapping("/validar")
+    @Transactional
     public ResponseEntity<?> validar(@RequestBody Map<String, String> credenciales) {
         String rut = credenciales.get("rut");
         String password = credenciales.get("password");
