@@ -71,6 +71,8 @@ public class AuthController {
             return ResponseEntity.status(401).body(Map.of("error", "Credenciales incorrectas"));
 
         } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("ERROR " +e.getMessage());
             return ResponseEntity.status(503).body(Map.of("error", "Servicio no disponible"));
         }
     }

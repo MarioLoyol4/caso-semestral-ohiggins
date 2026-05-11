@@ -5,14 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e9ab86dd-a396-4b2b-9ff9-21493e07530c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/academic-service/src/main/java/cl/duoc/colegio/academic/config/SecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/academic-service/src/main/resources/import.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/attendance-service/src/main/resources/import.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/communication-service/src/main/resources/import.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/academic-service/src/main/java/cl/duoc/colegio/academic/controller/DocenteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/academic-service/src/main/java/cl/duoc/colegio/academic/controller/DocenteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/academic-service/src/main/java/cl/duoc/colegio/academic/model/Docente.java" beforeDir="false" afterPath="$PROJECT_DIR$/academic-service/src/main/java/cl/duoc/colegio/academic/model/Docente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/academic-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/academic-service/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/academic-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/academic-service/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/attendance-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/attendance-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bff-service/src/main/java/cl/duoc/colegio/bff/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bff-service/src/main/java/cl/duoc/colegio/bff/controller/AuthController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/communication-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/communication-service/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/css/DashboardDocente.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/css/DashboardDocente.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/DashboardDocente.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/DashboardDocente.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/academicdb.mv.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/attendancedb.mv.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/communicationdb.mv.db" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +76,7 @@
     "kotlin-language-version-configured": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Application.AcademicServiceApplication">
+  <component name="RunManager" selected="Application.BffServiceApplication">
     <configuration name="AcademicServiceApplication" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="ms-21" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
