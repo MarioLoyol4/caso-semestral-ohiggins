@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -49,5 +50,5 @@ public class Docente {
             joinColumns = @JoinColumn(name = "docente_id"),
             inverseJoinColumns = @JoinColumn(name = "asignatura_id")
     )
-    private List<Asignatura> asignaturas;
+    private List<Asignatura> asignaturas = new ArrayList<>();
 }

@@ -15,3 +15,8 @@ frontend/dist/
 backend/.gradle/
 backend/build/
 backend/out/
+
+# Bases de datos locales H2
+**/data/
+*.db
+*.mv.db

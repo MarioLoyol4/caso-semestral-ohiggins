@@ -4,6 +4,7 @@ import cl.duoc.colegio.academic.model.Asignatura;
 import cl.duoc.colegio.academic.model.Docente;
 import cl.duoc.colegio.academic.repository.AsignaturaRepository;
 import cl.duoc.colegio.academic.repository.DocenteRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -45,6 +46,7 @@ public class DocenteController {
     }
 
     @PostMapping("/{docenteId}/asignaturas/{asignaturaId}")
+    @Transactional
     public ResponseEntity<Docente> asignarAsignatura(
             @PathVariable Long docenteId,
             @PathVariable Long asignaturaId    ) {
