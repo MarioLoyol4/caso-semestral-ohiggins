@@ -13,23 +13,25 @@ public class MicroservicioClient {
     private final RestTemplate restTemplate;
     private final CircuitBreakerRegistry circuitBreakerRegistry;
 
-    public MicroservicioClient(RestTemplate restTemplate, CircuitBreakerRegistry circuitBreakerRegistry) {
+    public MicroservicioClient(RestTemplate restTemplate,
+                               CircuitBreakerRegistry circuitBreakerRegistry) {
         this.restTemplate = restTemplate;
         this.circuitBreakerRegistry = circuitBreakerRegistry;
     }
 
-    public  Object llamarConCircuitBreaker(String nombreServicio, String url) {
+    // GET con Circuit Breaker
+    public Object llamarConCircuitBreaker(String nombreServicio, String url) {
         var cb = circuitBreakerRegistry.circuitBreaker(nombreServicio);
-
-        return cb.executeSupplier(() -> {
-            try {
-                return restTemplate.getForObject(url, Object.class);
-            } catch (Exception e) {
-                throw new RuntimeException("Error llamando a " + nombreServicio + ": " + e.getMessage(), e);
-            }
-        });
+        return cb.executeSupplier(() -> restTemplate.getForObject(url, Object.class));
     }
 
+    // POST con Circuit Breaker
+    public Object llamarConCircuitBreaker(String nombreServicio, String url, Object body) {
+        var cb = circuitBreakerRegistry.circuitBreaker(nombreServicio);
+        return cb.executeSupplier(() -> restTemplate.postForObject(url, body, Object.class));
+    }
+
+    // GET seguro con fallback
     public Object llamarSeguro(String nombreServicio, String url) {
         try {
             return llamarConCircuitBreaker(nombreServicio, url);
@@ -43,7 +45,7 @@ public class MicroservicioClient {
             return Map.of(
                     "disponible", false,
                     "servicio", nombreServicio,
-                    "mensaje","Error al contactar el servicio: " + e.getMessage()
+                    "mensaje", "Error al contactar el servicio: " + e.getMessage()
             );
         }
     }

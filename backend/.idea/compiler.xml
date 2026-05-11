@@ -10,7 +10,6 @@
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
         </processorPath>
-        <module name="academic-service" />
         <module name="attendance-service" />
         <module name="bff-service" />
       </profile>
@@ -19,6 +18,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="communication-service" />
+        <module name="academic-service" />
       </profile>
     </annotationProcessing>
   </component>

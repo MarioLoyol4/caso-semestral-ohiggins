@@ -5,27 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e9ab86dd-a396-4b2b-9ff9-21493e07530c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/bff-service/src/main/java/cl/duoc/colegio/bff/client/MicroservicioClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/communication-service/src/main/java/cl/duoc/colegio/communication/controller/ComunicadoController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/communication-service/src/main/java/cl/duoc/colegio/communication/controller/MensajeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/communication-service/src/main/java/cl/duoc/colegio/communication/model/Comunicado.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/communication-service/src/main/java/cl/duoc/colegio/communication/model/Mensaje.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/communication-service/src/main/java/cl/duoc/colegio/communication/notificacion/NotifiacionEmail.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/communication-service/src/main/java/cl/duoc/colegio/communication/notificacion/Notificacion.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/communication-service/src/main/java/cl/duoc/colegio/communication/notificacion/NotificacionFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/communication-service/src/main/java/cl/duoc/colegio/communication/notificacion/NotificacionPlataforma.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/communication-service/src/main/java/cl/duoc/colegio/communication/repository/ComunicadoRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/communication-service/src/main/java/cl/duoc/colegio/communication/repository/MensajeRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/communication-service/src/main/java/cl/duoc/colegio/communication/service/ComunicadoService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/communication-service/src/main/java/cl/duoc/colegio/communication/service/MensajeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/academic-service/src/main/java/cl/duoc/colegio/academic/config/PasswordConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/academic-service/src/main/java/cl/duoc/colegio/academic/controller/ApoderadoController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/academic-service/src/main/java/cl/duoc/colegio/academic/controller/AuthAcademicController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/academic-service/src/main/java/cl/duoc/colegio/academic/controller/DocenteController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/academic-service/src/main/java/cl/duoc/colegio/academic/model/Apoderado.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/academic-service/src/main/java/cl/duoc/colegio/academic/model/Docente.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/academic-service/src/main/java/cl/duoc/colegio/academic/repository/ApoderadoRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/academic-service/src/main/java/cl/duoc/colegio/academic/repository/DocenteRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bff-service/src/main/java/cl/duoc/colegio/bff/controller/AuthController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bff-service/src/main/java/cl/duoc/colegio/bff/security/JwtFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bff-service/src/main/java/cl/duoc/colegio/bff/security/JwtUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bff-service/src/main/java/cl/duoc/colegio/bff/security/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend.zip" beforeDir="false" afterPath="$PROJECT_DIR$/../backend.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/academic-service/src/main/java/cl/duoc/colegio/academic/controller/NotaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/academic-service/src/main/java/cl/duoc/colegio/academic/controller/NotaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/academic-service/src/main/java/cl/duoc/colegio/academic/repository/NotaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/academic-service/src/main/java/cl/duoc/colegio/academic/repository/NotaRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/academic-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/academic-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/academic-service/src/main/java/cl/duoc/colegio/academic/controller/EstudianteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/academic-service/src/main/java/cl/duoc/colegio/academic/controller/EstudianteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/academic-service/src/main/java/cl/duoc/colegio/academic/model/Estudiante.java" beforeDir="false" afterPath="$PROJECT_DIR$/academic-service/src/main/java/cl/duoc/colegio/academic/model/Estudiante.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/academic-service/src/main/java/cl/duoc/colegio/academic/repository/EstudianteRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/academic-service/src/main/java/cl/duoc/colegio/academic/repository/EstudianteRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bff-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bff-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bff-service/src/main/java/cl/duoc/colegio/bff/client/MicroservicioClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/bff-service/src/main/java/cl/duoc/colegio/bff/client/MicroservicioClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bff-service/src/main/java/cl/duoc/colegio/bff/controller/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bff-service/src/main/java/cl/duoc/colegio/bff/controller/DashboardController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bff-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bff-service/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/communication-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/communication-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/communication-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/communication-service/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,21 +69,65 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Application.AcademicServiceApplication.executor": "Run",
-    "Application.AttendanceServiceApplication.executor": "Run",
-    "Application.BffServiceApplication.executor": "Run",
-    "Application.CommunicationServiceApplication.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "feature/backend-dev",
-    "kotlin-language-version-configured": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Application.AcademicServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.AttendanceServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.BffServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.CommunicationServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/backend-dev&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RunManager" selected="Application.AcademicServiceApplication">
+    <configuration name="AcademicServiceApplication" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="ms-21" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="cl.duoc.colegio.academic.AcademicServiceApplication" />
+      <module name="academic-service" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AttendanceServiceApplication" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="ms-21" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="cl.duoc.colegio.attendance.AttendanceServiceApplication" />
+      <module name="attendance-service" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BffServiceApplication" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="ms-21" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="cl.duoc.colegio.bff.BffServiceApplication" />
+      <module name="bff-service" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CommunicationServiceApplication" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="ms-21" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="cl.duoc.colegio.communication.CommunicationServiceApplication" />
+      <module name="communication-service" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.AcademicServiceApplication" />
+      <item itemvalue="Application.AttendanceServiceApplication" />
+      <item itemvalue="Application.BffServiceApplication" />
+      <item itemvalue="Application.CommunicationServiceApplication" />
+    </list>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="e9ab86dd-a396-4b2b-9ff9-21493e07530c" name="Changes" comment="" />
@@ -91,5 +137,19 @@
       <updated>1778013225275</updated>
     </task>
     <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/academic-service/src/main/java/cl/duoc/colegio/academic/controller/DocenteController.java</url>
+          <line>51</line>
+          <properties>
+            <option name="lambda-ordinal" value="0" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

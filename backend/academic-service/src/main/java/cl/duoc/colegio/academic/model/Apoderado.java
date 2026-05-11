@@ -1,5 +1,6 @@
 package cl.duoc.colegio.academic.model;
 
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
@@ -7,12 +8,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "estudiantes")
-public class Estudiante {
+@Table(name = "apoderados")
+public class Apoderado {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,14 +34,21 @@ public class Estudiante {
 
     private String segundoApellido;
 
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     private String email;
+
+    @Column(nullable = false)
+    private String telefono;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @Column(nullable = false)
     private String password;
 
-    @ManyToOne
-    @JoinColumn(name = "curso_id")
-    private Curso curso;
+    @ManyToMany
+    @JoinTable(
+            name = "apoderado_estudiante",
+            joinColumns = @JoinColumn(name = "apoderado_id"),
+            inverseJoinColumns = @JoinColumn(name = "estudiante_id")
+    )
+    private List<Estudiante> estudiantes;
 }
