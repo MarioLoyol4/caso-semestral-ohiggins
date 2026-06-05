@@ -22,3 +22,24 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+
+# Entornos de desarrollo (¡Muy importante para ustedes!)
+.idea/
+.vscode/
+*.swp
+*.iml
+
+# Node / Frontend
+frontend/node_modules/
+frontend/dist/
+
+# Java / Backend / Gradle
+backend/.gradle/
+backend/build/
+backend/out/
+
+# Bases de datos locales H2
+**/data/
+*.db
+*.mv.db
