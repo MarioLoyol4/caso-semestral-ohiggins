@@ -5,13 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e9ab86dd-a396-4b2b-9ff9-21493e07530c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/academic-service/src/main/java/fullstack/caso_semestral/academic/controllers/AsignaturaController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/academic-service/src/main/java/fullstack/caso_semestral/academic/controllers/ProfesorController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/academic-service/src/main/java/fullstack/caso_semestral/academic/models/Asignatura.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/academic-service/src/main/java/fullstack/caso_semestral/academic/models/Estudiante.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/academic-service/src/main/java/fullstack/caso_semestral/academic/models/Profesor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/academic-service/src/main/java/fullstack/caso_semestral/academic/services/AsignaturaService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/academic-service/src/main/java/fullstack/caso_semestral/academic/services/ProfesorService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/academic-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/academic-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/attendance-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/attendance-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bff-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bff-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/communication-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/communication-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/academicdb.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/data/academicdb.mv.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/attendancedb.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/data/attendancedb.mv.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/communicationdb.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/data/communicationdb.mv.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,11 +67,12 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "Mandarina",
     "kotlin-language-version-configured": "true",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
   <component name="RunManager" selected="Application.BffServiceApplication">
