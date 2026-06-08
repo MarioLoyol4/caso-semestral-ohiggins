@@ -54,7 +54,7 @@ function Login() {
             <div className="login-right">
                 <div className="login-card">
                     <div className="login-logo">
-                        <div className="login-logo-icono">0</div>
+                        <div className="login-logo-icono"><img src="../../Imagen/images.png" alt="Logo" /></div>
                         <span>Colegio O'Higgins</span>
                     </div>
                     <h2>Iniciar Sesión</h2>
