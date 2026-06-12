@@ -43,7 +43,7 @@ function Login() {
             <div className="login-left">
                 <div className="login-left-content">
                     <h1>Colegio O'Higgins</h1>
-                    <p className="login-slogan">"Todos los niños pueden aprender"</p>
+                    <p className="login-slogan">"Sembrando valores para un mundo mejor"</p>
                     <p className="login-descripcion">
                         Portal academico para estudiantes, apoderados y docentes.
                         Accede a notas, asistencias y comunicados del colegio.
