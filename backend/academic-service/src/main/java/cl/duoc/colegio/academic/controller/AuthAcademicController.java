@@ -24,17 +24,13 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class AuthAcademicController {
 
-    @Autowired
-    private EstudianteRepository estudianteRepository;
+    private static final String ERROR_KEY = "error";
+    private static final String ERROR_MSG_CREDENTIALS = "Credenciales incorrectas";
 
-    @Autowired
-    private ApoderadoRepository apoderadoRepository;
-
-    @Autowired
-    private DocenteRepository docenteRepository;
-
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    private final EstudianteRepository estudianteRepository;
+    private final ApoderadoRepository apoderadoRepository;
+    private final DocenteRepository docenteRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @PostMapping("/validar")
     @Transactional
@@ -48,7 +44,7 @@ public class AuthAcademicController {
             Apoderado a = apoderado.get();
 
             if (!passwordEncoder.matches(password, a.getPassword())) {
-                return ResponseEntity.status(401).body(Map.of("error", "Credenciales incorrectas"));
+                return ResponseEntity.status(401).body(Map.of(ERROR_KEY, ERROR_MSG_CREDENTIALS));
             }
 
             List<Long> estudiantesIds = a.getEstudiantes()
@@ -68,7 +64,7 @@ public class AuthAcademicController {
             Estudiante e = estudiante.get();
 
             if (!passwordEncoder.matches(password, e.getPassword())) {
-                return ResponseEntity.status(401).body(Map.of("error", "Credenciales incorrectas"));
+                return ResponseEntity.status(401).body(Map.of(ERROR_KEY, ERROR_MSG_CREDENTIALS));
             }
 
             return ResponseEntity.ok(Map.of(
@@ -82,7 +78,7 @@ public class AuthAcademicController {
         if (docente.isPresent()) {
             Docente d = docente.get();
             if (!passwordEncoder.matches(password, d.getPassword())) {
-                return ResponseEntity.status(401).body(Map.of("error", "Credenciales incorrectas"));
+                return ResponseEntity.status(401).body(Map.of(ERROR_KEY, ERROR_MSG_CREDENTIALS));
             }
             return ResponseEntity.ok(Map.of(
                     "referenciaId", String.valueOf(d.getId()),
@@ -92,6 +88,6 @@ public class AuthAcademicController {
         }
 
 
-        return ResponseEntity.status(401).body(Map.of("error", "Credenciales incorrectas"));
+        return ResponseEntity.status(401).body(Map.of(ERROR_KEY, ERROR_MSG_CREDENTIALS));
     }
 }
