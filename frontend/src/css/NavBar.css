@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #1a6b6b;
+    background-color: #7896b0;
     padding: 0 32px;
     height: 64px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
@@ -30,6 +30,11 @@
     font-size: 1.1rem;
     font-weight: 700;
     flex-shrink: 0;
+}
+.navbar-logo img {
+    width: 40px;
+    height: 40px;
+    border-radius: 100px;
 }
 
 .navbar-info {

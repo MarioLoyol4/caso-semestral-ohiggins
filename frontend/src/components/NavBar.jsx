@@ -21,7 +21,7 @@ function NavBar({nombreUsuario}) {
     return (
         <nav className="navbar">
             <div className="navbar-izquierda">
-                <div className="navbar-logo">O</div>
+                <div className="navbar-logo"><img src="../../Imagen/images.png" alt="" /></div>
                 <div className="navbar-info">
                     <span className="navbar-colegio">Colegio O'Higgins</span>
                     <span className="navbar-subtitulo">Portal digital</span>
