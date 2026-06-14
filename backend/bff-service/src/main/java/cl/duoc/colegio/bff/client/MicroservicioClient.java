@@ -2,6 +2,8 @@ package cl.duoc.colegio.bff.client;
 
 import io.github.resilience4j.circuitbreaker.CallNotPermittedException;
 import io.github.resilience4j.circuitbreaker.CircuitBreakerRegistry;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.*;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -13,25 +15,38 @@ public class MicroservicioClient {
     private final RestTemplate restTemplate;
     private final CircuitBreakerRegistry circuitBreakerRegistry;
 
+    @Value("${internal.api.key}")
+    private String internalApiKey;
+
     public MicroservicioClient(RestTemplate restTemplate,
                                CircuitBreakerRegistry circuitBreakerRegistry) {
         this.restTemplate = restTemplate;
         this.circuitBreakerRegistry = circuitBreakerRegistry;
     }
 
-    // GET con Circuit Breaker
+    private HttpHeaders headers() {
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("X-Internal-Api-Key", internalApiKey);
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        return headers;
+    }
+
     public Object llamarConCircuitBreaker(String nombreServicio, String url) {
         var cb = circuitBreakerRegistry.circuitBreaker(nombreServicio);
-        return cb.executeSupplier(() -> restTemplate.getForObject(url, Object.class));
+        return cb.executeSupplier(() -> {
+            HttpEntity<?> entity = new HttpEntity<>(headers());
+            return restTemplate.exchange(url, HttpMethod.GET, entity, Object.class).getBody();
+        });
     }
 
-    // POST con Circuit Breaker
     public Object llamarConCircuitBreaker(String nombreServicio, String url, Object body) {
         var cb = circuitBreakerRegistry.circuitBreaker(nombreServicio);
-        return cb.executeSupplier(() -> restTemplate.postForObject(url, body, Object.class));
+        return cb.executeSupplier(() -> {
+            HttpEntity<?> entity = new HttpEntity<>(body, headers());
+            return restTemplate.exchange(url, HttpMethod.POST, entity, Object.class).getBody();
+        });
     }
 
-    // GET seguro con fallback
     public Object llamarSeguro(String nombreServicio, String url) {
         try {
             return llamarConCircuitBreaker(nombreServicio, url);
