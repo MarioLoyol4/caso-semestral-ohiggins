@@ -31,7 +31,7 @@ function NavBar({nombreUsuario}) {
             <div className="navbar-derecha">
                 <div className="navbar-usuario">
                     <div className="navbar-avatar">
-                        {nombreUsuario ? nombreUsuario.charAt(0).toUpperCase() : "?"}
+                        <img src="../../Imagen/avatar.jpg" alt="Avatar" />
                     </div>
                     <div className="navbar-usuario-info">
                         <span className="navbar-nombre">

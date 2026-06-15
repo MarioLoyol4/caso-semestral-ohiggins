@@ -68,17 +68,20 @@
 }
 
 .navbar-avatar {
-    width: 36px;
-    height: 36px;
+    border-radius: 50%;
     background-color: #c0392b;
     color: white;
-    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 0.95rem;
     font-weight: 700;
     flex-shrink: 0;
+}
+.navbar-avatar img {
+    width: 40xp;
+    height: 36px;
+    border-radius: 50%;
 }
 
 .navbar-usuario-info {
