@@ -24,12 +24,6 @@ public class AuthController {
     private final JwtUtil jwtUtil;
     private final MicroservicioClient client;
 
-    @Value("${admin.rut}")
-    private String adminRut;
-
-    @Value("${admin.password}")
-    private String adminPassword;
-
     @Value("${services.academic.url}")
     private String academicUrl;
 
@@ -38,16 +32,7 @@ public class AuthController {
         String rut = credenciales.get("rut");
         String password = credenciales.get("password");
 
-        // Superadmin hardcodeado
-        if (rut.equals(adminRut)) {
-            if (!password.equals(adminPassword)) {
-                return ResponseEntity.status(401).body(Map.of(ERROR_KEY, MSG_ERROR_CREDENCIALES));
-            }
-            return ResponseEntity.ok(Map.of(
-                    "token", jwtUtil.generarToken("admin-1", ROL_ADMIN, List.of()),
-                    "rol", ROL_ADMIN
-            ));
-        }
+
 
         // Resto de usuarios — consultar academic-service
         try {

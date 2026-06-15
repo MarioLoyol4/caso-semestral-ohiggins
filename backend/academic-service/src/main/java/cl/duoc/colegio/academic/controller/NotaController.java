@@ -2,17 +2,17 @@ package cl.duoc.colegio.academic.controller;
 
 import cl.duoc.colegio.academic.model.Nota;
 import cl.duoc.colegio.academic.repository.NotaRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/notas")
+@RequiredArgsConstructor
 public class NotaController {
 
-    @Autowired
-    private NotaRepository notaRepository;
+    private final NotaRepository notaRepository;
 
     @GetMapping
     public List<Nota> listarTodas() {

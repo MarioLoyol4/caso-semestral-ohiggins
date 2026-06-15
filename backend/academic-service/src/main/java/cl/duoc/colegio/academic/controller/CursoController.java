@@ -2,6 +2,7 @@ package cl.duoc.colegio.academic.controller;
 
 import cl.duoc.colegio.academic.model.Curso;
 import cl.duoc.colegio.academic.repository.CursoRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,10 +10,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/cursos")
+@RequiredArgsConstructor
 public class CursoController {
 
-    @Autowired
-    private CursoRepository cursoRepository;
+
+    private final CursoRepository cursoRepository;
 
     @GetMapping
     public List<Curso> listarTodos() {

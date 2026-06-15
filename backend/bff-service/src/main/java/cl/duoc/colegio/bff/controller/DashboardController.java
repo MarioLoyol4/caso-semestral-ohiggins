@@ -1,6 +1,7 @@
 package cl.duoc.colegio.bff.controller;
 
 import cl.duoc.colegio.bff.client.MicroservicioClient;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -19,10 +20,11 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/bff/dashboard")
+@RequiredArgsConstructor
 public class DashboardController {
 
-    @Autowired
-    private MicroservicioClient client;
+
+    private final MicroservicioClient client;
 
     @Value("${services.academic.url}")
     private String academicUrl;
@@ -33,9 +35,7 @@ public class DashboardController {
     @Value("${services.communication.url}")
     private String communicationUrl;
 
-    public DashboardController(MicroservicioClient client) {
-        this.client = client;
-    }
+
 
     @GetMapping("/estudiante/{id}")
     @PreAuthorize("hasAnyRole('ADMIN', 'DOCENTE', 'APODERADO')")
