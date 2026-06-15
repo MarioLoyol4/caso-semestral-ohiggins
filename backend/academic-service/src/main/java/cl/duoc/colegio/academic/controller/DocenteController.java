@@ -18,14 +18,14 @@ import java.util.List;
 @RequiredArgsConstructor
 public class DocenteController {
 
-    @Autowired
-    private DocenteRepository docenteRepository;
 
-    @Autowired
-    private AsignaturaRepository asignaturaRepository;
+    private final DocenteRepository docenteRepository;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+
+    private final AsignaturaRepository asignaturaRepository;
+
+
+    private final PasswordEncoder passwordEncoder;
 
     @PostMapping
     public ResponseEntity<Docente> crear(@RequestBody Docente docente) {

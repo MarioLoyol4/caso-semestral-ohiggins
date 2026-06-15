@@ -14,8 +14,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ComunicadoController {
 
-    @Autowired
-    private ComunicadoService comunicadoService;
+
+    private final ComunicadoService comunicadoService;
 
     @PostMapping
     public ResponseEntity<Comunicado> publicar(@RequestBody Comunicado comunicado) {

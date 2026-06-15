@@ -16,10 +16,10 @@ import java.util.List;
 public class MensajeService {
 
     @Autowired
-    private MensajeRepository mensajeRepository;
+    private final MensajeRepository mensajeRepository;
 
     @Autowired
-    private NotificacionFactory notificacionFactory;
+    private final NotificacionFactory notificacionFactory;
 
     public Mensaje enviarMensaje(Mensaje mensaje) {
         Notificacion notificacion = notificacionFactory.crear(mensaje.getTipoNotificacion());
