@@ -19,10 +19,12 @@ import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
 import cl.duoc.colegio.attendance.model.Anotacion;
 import cl.duoc.colegio.attendance.repository.AnotacionRepository;
+
+@ExtendWith(MockitoExtension.class)
 public class AnotacionControllerTest {
 
 
-    @ExtendWith(MockitoExtension.class)
+
     
     @Mock
     private AnotacionRepository anotacionRepository;

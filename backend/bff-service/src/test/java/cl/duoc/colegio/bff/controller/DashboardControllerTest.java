@@ -1,6 +1,7 @@
 package cl.duoc.colegio.bff.controller;
 
 import cl.duoc.colegio.bff.client.MicroservicioClient;
+import cl.duoc.colegio.bff.controller.DashboardController;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
