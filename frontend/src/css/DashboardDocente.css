@@ -62,7 +62,7 @@
 
 .docente-buscar button {
     padding: 8px 16px;
-    background-color: #1a6b6b;
+    background-color: #7896b0;
     color: white;
     border: none;
     border-radius: 6px;
@@ -193,7 +193,7 @@
     padding: 16px;
     border: 1px solid #dadce0;
     border-radius: 8px;
-    border-left: 4px solid #1a6b6b;
+    border-left: 4px solid #7896b0;
 }
 
 .comunicado-item h3 {
@@ -224,7 +224,7 @@
 }
 
 .docente-no-disponible {
-    color: #f29900;
+    color: #70bbc0;
     font-size: 0.875rem;
     text-align: center;
     padding: 24px 0;
