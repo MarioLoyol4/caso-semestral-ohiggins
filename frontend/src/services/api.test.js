@@ -11,7 +11,7 @@ import {
     getEstudiantesApoderado
 } from './api';
 
-const BFF_URL = 'http://localhost:9090';
+const BFF_URL = 'http://localhost:8080';
 
 // Mock estricto y transparente de SessionStorage
 const mockSessionStorage = (() => {
