@@ -16,17 +16,13 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class AuthController {
 
-    @Autowired
-    private JwtUtil jwtUtil;
+    private static final String ERROR_KEY = "error";
+    private static final String MSG_ERROR_CREDENCIALES = "Credenciales incorrectas";
+    private static final String ROL_ADMIN = "ADMIN";
 
-    @Autowired
-    private MicroservicioClient client;
 
-    @Value("${admin.rut}")
-    private String adminRut;
-
-    @Value("${admin.password}")
-    private String adminPassword;
+    private final JwtUtil jwtUtil;
+    private final MicroservicioClient client;
 
     @Value("${services.academic.url}")
     private String academicUrl;
@@ -36,16 +32,7 @@ public class AuthController {
         String rut = credenciales.get("rut");
         String password = credenciales.get("password");
 
-        // Superadmin hardcodeado
-        if (rut.equals(adminRut)) {
-            if (!password.equals(adminPassword)) {
-                return ResponseEntity.status(401).body(Map.of("error", "Credenciales incorrectas"));
-            }
-            return ResponseEntity.ok(Map.of(
-                    "token", jwtUtil.generarToken("admin-1", "ADMIN", List.of()),
-                    "rol", "ADMIN"
-            ));
-        }
+
 
         // Resto de usuarios — consultar academic-service
         try {
@@ -68,12 +55,12 @@ public class AuthController {
                 ));
             }
 
-            return ResponseEntity.status(401).body(Map.of("error", "Credenciales incorrectas"));
+            return ResponseEntity.status(401).body(Map.of(ERROR_KEY, MSG_ERROR_CREDENCIALES));
 
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("ERROR " +e.getMessage());
-            return ResponseEntity.status(503).body(Map.of("error", "Servicio no disponible"));
+            return ResponseEntity.status(503).body(Map.of(ERROR_KEY, "Servicio no disponible"));
         }
     }
 }

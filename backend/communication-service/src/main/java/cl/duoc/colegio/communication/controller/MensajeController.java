@@ -15,11 +15,11 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MensajeController {
 
-    @Autowired
-    private MensajeService mensajeService;
+
+    private final MensajeService mensajeService;
 
     @PostMapping
-    private ResponseEntity<Mensaje> enviar(@RequestBody Mensaje mensaje) {
+    public ResponseEntity<Mensaje> enviar(@RequestBody Mensaje mensaje) {
         return ResponseEntity.ok(mensajeService.enviarMensaje(mensaje));
     }
 

@@ -1,45 +1,38 @@
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
-
-node_modules
-dist
-dist-ssr
-*.local
-
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
-.DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
-
-
-# Entornos de desarrollo (¡Muy importante para ustedes!)
+# ==========================================
+# 1. ENTORNOS DE DESARROLLO E IDE
+# ==========================================
 .idea/
 .vscode/
-*.swp
 *.iml
+*.swp
 
-# Node / Frontend
+# ==========================================
+# 2. FRONTEND (React / Node)
+# ==========================================
 frontend/node_modules/
 frontend/dist/
+frontend/.env
+frontend/.env.*
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
 
-# Java / Backend / Gradle
-backend/.gradle/
-backend/build/
-backend/out/
+# ==========================================
+# 3. BACKEND (Spring Boot / Maven)
+# ==========================================
+# Ignorar los compilados y ejecutables
+backend/target/
+backend/**/*.jar
+backend/**/*.war
+*.log
 
-# Bases de datos locales H2
-**/data/
-*.db
+# Ignorar las bases de datos locales H2 (¡Adiós a los errores de commits!)
+backend/**/data/
 *.mv.db
+*.trace.db
+
+# ==========================================
+# 4. SISTEMAS OPERATIVOS (Archivos ocultos)
+# ==========================================
+.DS_Store
+Thumbs.db

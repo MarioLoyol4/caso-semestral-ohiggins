@@ -12,8 +12,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ComunicadoService {
 
-    @Autowired
-    private ComunicadoRepository comunicadoRepository;
+
+    private final ComunicadoRepository comunicadoRepository;
 
     public Comunicado publicar(Comunicado comunicado) {
         return comunicadoRepository.save(comunicado);

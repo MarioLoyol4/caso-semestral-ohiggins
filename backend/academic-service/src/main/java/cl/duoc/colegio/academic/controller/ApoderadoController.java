@@ -19,14 +19,14 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ApoderadoController {
 
-    @Autowired
-    private ApoderadoRepository apoderadoRepository;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    private final ApoderadoRepository apoderadoRepository;
 
-    @Autowired
-    private EstudianteRepository estudianteRepository;
+
+    private final PasswordEncoder passwordEncoder;
+
+
+    private final EstudianteRepository estudianteRepository;
 
     @PostMapping
     @Transactional
