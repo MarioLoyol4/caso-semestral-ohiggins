@@ -1,0 +1,49 @@
+
+services:
+  # 1. Frontend en React
+  frontend:
+    build: ./frontend  # Ruta a la carpeta de tu frontend
+    ports:
+      - "5173:80"
+    networks:
+      - colegio-network
+
+  # 2. Backend For Frontend (BFF)
+  bff-service:
+    build: ./backend/bff-service
+    ports:
+      - "8080:8080"
+    networks:
+      - colegio-network
+    depends_on:
+      - academic-service
+      - attendance-service
+      - communication-service
+
+  # 3. Microservicio Académico
+  academic-service:
+    build: ./backend/academic-service
+    ports:
+      - "8081:8081"
+    networks:
+      - colegio-network
+
+  # 4. Microservicio de Asistencia
+  attendance-service:
+    build: ./backend/attendance-service
+    ports:
+      - "8082:8082"
+    networks:
+      - colegio-network
+
+  # 5. Microservicio de Comunicaciones
+  communication-service:
+    build: ./backend/communication-service
+    ports:
+      - "8083:8083"
+    networks:
+      - colegio-network
+
+networks:
+  colegio-network:
+    driver: bridge
