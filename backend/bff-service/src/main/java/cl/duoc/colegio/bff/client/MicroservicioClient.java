@@ -15,6 +15,8 @@ public class MicroservicioClient {
     private final RestTemplate restTemplate;
     private final CircuitBreakerRegistry circuitBreakerRegistry;
 
+    private static final String MENSAJE_ERROR_SERVICIO = "Servicio no disponible temporalmente, intente mas tarde por favor";
+
     @Value("${internal.api.key}")
     private String internalApiKey;
 
@@ -60,7 +62,7 @@ public class MicroservicioClient {
             return Map.of(
                     "disponible", false,
                     "servicio", nombreServicio,
-                    "mensaje", "Error al contactar el servicio: " + e.getMessage()
+                    "mensaje",  MENSAJE_ERROR_SERVICIO
             );
         }
     }

@@ -35,7 +35,9 @@ public class SecurityConfig {
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/auth/login").permitAll()
+                        .requestMatchers("/api/bff/dashboard/asistencias/**").hasAnyRole("DOCENTE", "ADMIN")
                         .requestMatchers("/api/bff/dashboard/**")
+
                         .hasAnyRole("ADMIN", "DOCENTE", "APODERADO", "ESTUDIANTE")
                         .anyRequest().authenticated()
                 )

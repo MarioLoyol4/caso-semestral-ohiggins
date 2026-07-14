@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import NavBar from '../components/NavBar';
 import { getDashboardEstudiante, obtenerToken } from '../services/api';
+import { agruparNotasPorAsignatura, calcularPromedioNotas } from '../utils/notas';
 import '../css/DashboardApoderado.css';
 
 function DashboardApoderado() {
@@ -42,6 +43,8 @@ function DashboardApoderado() {
             setCargando(false);
         }
     };
+
+    const notasAgrupadas = agruparNotasPorAsignatura(datos?.notas);
 
     return (
         <div className="apoderado-page">
@@ -89,6 +92,11 @@ function DashboardApoderado() {
                         <div className="apoderado-card">
                             <div className="apoderado-card-header">
                                 <h2>Notas</h2>
+                                {calcularPromedioNotas(datos?.notas) !== null && (
+                                    <span className={`promedio-badge ${calcularPromedioNotas(datos.notas) >= 4 ? 'aprobado' : 'reprobado'}`}>
+                                        Promedio general: {calcularPromedioNotas(datos.notas).toFixed(1)}
+                                    </span>
+                                )}
                             </div>
                             <div className="apoderado-card-body">
                                 {datos.notas?.disponible === false ? (
@@ -96,24 +104,36 @@ function DashboardApoderado() {
                                         {datos.notas.mensaje}
                                     </p>
                                 ) : Array.isArray(datos.notas) && datos.notas.length > 0 ? (
-                                    <table className="apoderado-tabla">
-                                        <thead>
-                                            <tr>
-                                                <th>Evaluación</th>
-                                                <th>Nota</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {datos.notas.map((nota, i) => (
-                                                <tr key={i}>
-                                                    <td>{nota.evaluacion?.nombre || `Evaluación ${i + 1}`}</td>
-                                                    <td className={nota.valor < 4 ? 'nota-roja' : 'nota-verde'}>
-                                                        {nota.valor?.toFixed(1)}
-                                                    </td>
-                                                </tr>
-                                            ))}
-                                        </tbody>
-                                    </table>
+                                    <div className="notas-por-asignatura">
+                                        {notasAgrupadas.map((grupo) => (
+                                            <div key={grupo.nombre} className="asignatura-notas-card">
+                                                <div className="asignatura-notas-header">
+                                                    <h3>{grupo.nombre}</h3>
+                                                    <span className={`promedio-badge ${grupo.promedio >= 4 ? 'aprobado' : 'reprobado'}`}>
+                                                        Promedio: {grupo.promedio?.toFixed(1)}
+                                                    </span>
+                                                </div>
+                                                <table className="apoderado-tabla">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Evaluación</th>
+                                                            <th>Nota</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        {grupo.notas.map((nota, i) => (
+                                                            <tr key={`${grupo.nombre}-${i}`}>
+                                                                <td>{nota.evaluacion?.nombre || `Evaluación ${i + 1}`}</td>
+                                                                <td className={nota.valor < 4 ? 'nota-roja' : 'nota-verde'}>
+                                                                    {nota.valor?.toFixed(1)}
+                                                                </td>
+                                                            </tr>
+                                                        ))}
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        ))}
+                                    </div>
                                 ) : (
                                     <p className="apoderado-vacio">Sin notas registradas</p>
                                 )}

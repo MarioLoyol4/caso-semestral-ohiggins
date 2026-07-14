@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import NavBar from '../components/NavBar';
 import { getMiPerfil } from '../services/api';
+import { agruparNotasPorAsignatura, calcularPromedioNotas } from '../utils/notas';
 import '../css/DashboardEstudiante.css';
 
 function DashboardEstudiante() {
@@ -25,17 +26,13 @@ function DashboardEstudiante() {
         cargarDatos();
     }, []);
 
-    const calcularPromedio = (notas) => {
-        if (!notas || notas.length === 0) return null;
-        const suma = notas.reduce((acc, n) => acc + n.valor, 0);
-        return (suma / notas.length).toFixed(1);
-    };
-
     const calcularPorcentajeAsistencia = (asistencias) => {
         if (!asistencias || asistencias.length === 0) return null;
         const presentes = asistencias.filter(a => a.estado === 'PRESENTE').length;
         return Math.round((presentes / asistencias.length) * 100);
     };
+
+    const notasAgrupadas = agruparNotasPorAsignatura(datos?.notas);
 
     return (
         <div className="estudiante-page">
@@ -64,7 +61,7 @@ function DashboardEstudiante() {
                         <div className="estudiante-resumen">
                             <div className="resumen-card">
                                 <span className="resumen-valor">
-                                    {calcularPromedio(datos.notas) ?? '—'}
+                                    {calcularPromedioNotas(datos?.notas) ?? '—'}
                                 </span>
                                 <span className="resumen-label">Promedio General</span>
                             </div>
@@ -96,9 +93,9 @@ function DashboardEstudiante() {
                             <div className="estudiante-card">
                                 <div className="estudiante-card-header">
                                     <h2>Mis Notas</h2>
-                                    {calcularPromedio(datos.notas) && (
-                                        <span className={`promedio-badge ${parseFloat(calcularPromedio(datos.notas)) >= 4 ? 'aprobado' : 'reprobado'}`}>
-                                            Promedio: {calcularPromedio(datos.notas)}
+                                    {calcularPromedioNotas(datos.notas) !== null && (
+                                        <span className={`promedio-badge ${calcularPromedioNotas(datos.notas) >= 4 ? 'aprobado' : 'reprobado'}`}>
+                                            Promedio general: {calcularPromedioNotas(datos.notas).toFixed(1)}
                                         </span>
                                     )}
                                 </div>
@@ -106,30 +103,42 @@ function DashboardEstudiante() {
                                     {datos.notas?.disponible === false ? (
                                         <p className="estudiante-no-disponible">{datos.notas.mensaje}</p>
                                     ) : Array.isArray(datos.notas) && datos.notas.length > 0 ? (
-                                        <table className="estudiante-tabla">
-                                            <thead>
-                                                <tr>
-                                                    <th>Evaluación</th>
-                                                    <th>Nota</th>
-                                                    <th>Estado</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {datos.notas.map((nota, i) => (
-                                                    <tr key={i}>
-                                                        <td>{nota.evaluacion?.nombre || `Evaluación ${i + 1}`}</td>
-                                                        <td className={nota.valor < 4 ? 'nota-roja' : 'nota-verde'}>
-                                                            {nota.valor?.toFixed(1)}
-                                                        </td>
-                                                        <td>
-                                                            <span className={`estado-nota ${nota.valor >= 4 ? 'aprobado' : 'reprobado'}`}>
-                                                                {nota.valor >= 4 ? 'Aprobado' : 'Reprobado'}
-                                                            </span>
-                                                        </td>
-                                                    </tr>
-                                                ))}
-                                            </tbody>
-                                        </table>
+                                        <div className="notas-por-asignatura">
+                                            {notasAgrupadas.map((grupo) => (
+                                                <div key={grupo.nombre} className="asignatura-notas-card">
+                                                    <div className="asignatura-notas-header">
+                                                        <h3>{grupo.nombre}</h3>
+                                                        <span className={`promedio-badge ${grupo.promedio >= 4 ? 'aprobado' : 'reprobado'}`}>
+                                                            Promedio: {grupo.promedio?.toFixed(1)}
+                                                        </span>
+                                                    </div>
+                                                    <table className="estudiante-tabla">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Evaluación</th>
+                                                                <th>Nota</th>
+                                                                <th>Estado</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            {grupo.notas.map((nota, i) => (
+                                                                <tr key={`${grupo.nombre}-${i}`}>
+                                                                    <td>{nota.evaluacion?.nombre || `Evaluación ${i + 1}`}</td>
+                                                                    <td className={nota.valor < 4 ? 'nota-roja' : 'nota-verde'}>
+                                                                        {nota.valor?.toFixed(1)}
+                                                                    </td>
+                                                                    <td>
+                                                                        <span className={`estado-nota ${nota.valor >= 4 ? 'aprobado' : 'reprobado'}`}>
+                                                                            {nota.valor >= 4 ? 'Aprobado' : 'Reprobado'}
+                                                                        </span>
+                                                                    </td>
+                                                                </tr>
+                                                            ))}
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            ))}
+                                        </div>
                                     ) : (
                                         <p className="estudiante-vacio">Sin notas registradas</p>
                                     )}

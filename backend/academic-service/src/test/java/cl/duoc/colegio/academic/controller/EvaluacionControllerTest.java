@@ -2,6 +2,7 @@ package cl.duoc.colegio.academic.controller;
 
 import cl.duoc.colegio.academic.model.Asignatura;
 import cl.duoc.colegio.academic.model.Evaluacion;
+import cl.duoc.colegio.academic.repository.AsignaturaRepository;
 import cl.duoc.colegio.academic.repository.EvaluacionRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -12,6 +13,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
@@ -22,11 +24,14 @@ class EvaluacionControllerTest {
     @Mock
     private EvaluacionRepository evaluacionRepository;
 
+    @Mock
+    private AsignaturaRepository asignaturaRepository;
+
     private EvaluacionController evaluacionController;
 
     @BeforeEach
     void setUp() {
-        evaluacionController = new EvaluacionController(evaluacionRepository);
+        evaluacionController = new EvaluacionController(evaluacionRepository, asignaturaRepository);
     }
 
     @Test
@@ -98,6 +103,7 @@ class EvaluacionControllerTest {
         evaluacionGuardada.setFecha(LocalDate.of(2026, 5, 1));
         evaluacionGuardada.setAsignatura(asignatura);
 
+        when(asignaturaRepository.findById(1L)).thenReturn(Optional.of(asignatura));
         when(evaluacionRepository.save(any(Evaluacion.class))).thenReturn(evaluacionGuardada);
 
         // Act
@@ -141,6 +147,8 @@ class EvaluacionControllerTest {
         evaluacionGuardada2.setFecha(LocalDate.of(2026, 5, 10));
         evaluacionGuardada2.setAsignatura(asignatura2);
 
+        when(asignaturaRepository.findById(1L)).thenReturn(Optional.of(asignatura1));
+        when(asignaturaRepository.findById(2L)).thenReturn(Optional.of(asignatura2));
         when(evaluacionRepository.save(evaluacion1)).thenReturn(evaluacionGuardada1);
         when(evaluacionRepository.save(evaluacion2)).thenReturn(evaluacionGuardada2);
 

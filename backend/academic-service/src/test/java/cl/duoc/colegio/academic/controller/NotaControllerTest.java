@@ -1,6 +1,10 @@
 package cl.duoc.colegio.academic.controller;
 
+import cl.duoc.colegio.academic.model.Estudiante;
+import cl.duoc.colegio.academic.model.Evaluacion;
 import cl.duoc.colegio.academic.model.Nota;
+import cl.duoc.colegio.academic.repository.EstudianteRepository;
+import cl.duoc.colegio.academic.repository.EvaluacionRepository;
 import cl.duoc.colegio.academic.repository.NotaRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -10,6 +14,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -20,11 +25,17 @@ class NotaControllerTest {
     @Mock
     private NotaRepository notaRepository;
 
+    @Mock
+    private EstudianteRepository estudianteRepository;
+
+    @Mock
+    private EvaluacionRepository evaluacionRepository;
+
     private NotaController notaController;
 
     @BeforeEach
     void setUp() {
-        notaController = new NotaController(notaRepository);
+        notaController = new NotaController(notaRepository, estudianteRepository, evaluacionRepository);
     }
 
     @Test
@@ -43,7 +54,15 @@ class NotaControllerTest {
     void testGuardar() {
         Nota nota = new Nota();
         nota.setValor(6.5);
+        Estudiante estudiante = new Estudiante();
+        estudiante.setId(1L);
+        Evaluacion evaluacion = new Evaluacion();
+        evaluacion.setId(2L);
+        nota.setEstudiante(estudiante);
+        nota.setEvaluacion(evaluacion);
 
+        when(estudianteRepository.findById(1L)).thenReturn(Optional.of(estudiante));
+        when(evaluacionRepository.findById(2L)).thenReturn(Optional.of(evaluacion));
         when(notaRepository.save(nota)).thenReturn(nota);
 
         Nota resultado = notaController.guardar(nota);

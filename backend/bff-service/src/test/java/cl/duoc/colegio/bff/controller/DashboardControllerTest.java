@@ -149,4 +149,77 @@ class DashboardControllerTest {
         assertNotNull(respuesta.getBody());
         verify(client, times(2)).llamarSeguro(anyString(), anyString());
     }
+
+    @Test
+    @DisplayName("registrarAsistencia debe reenviar la petición al microservicio de asistencia")
+    void testRegistrarAsistencia() {
+        Map<String, Object> payload = Map.of("estudianteId", 1L, "fecha", "2026-07-14", "estado", "PRESENTE");
+        when(client.llamarConCircuitBreaker(eq("attendance-service"), eq("http://localhost:8082/api/asistencias"), any()))
+                .thenReturn(Map.of("id", 1));
+
+        ResponseEntity<?> respuesta = dashboardController.registrarAsistencia(payload);
+
+        assertEquals(HttpStatus.OK, respuesta.getStatusCode());
+        verify(client, times(1)).llamarConCircuitBreaker(eq("attendance-service"), eq("http://localhost:8082/api/asistencias"), any());
+    }
+
+    @Test
+    @DisplayName("registrarAnotacion debe reenviar la petición al microservicio de asistencia")
+    void testRegistrarAnotacion() {
+        Map<String, Object> payload = Map.of("estudianteId", 1L, "tipo", "POSITIVA", "descripcion", "Buen trabajo", "fecha", "2026-07-14");
+        when(client.llamarConCircuitBreaker(eq("attendance-service"), eq("http://localhost:8082/api/anotaciones"), any()))
+                .thenReturn(Map.of("id", 2));
+
+        ResponseEntity<?> respuesta = dashboardController.registrarAnotacion(payload);
+
+        assertEquals(HttpStatus.OK, respuesta.getStatusCode());
+        verify(client, times(1)).llamarConCircuitBreaker(eq("attendance-service"), eq("http://localhost:8082/api/anotaciones"), any());
+    }
+
+    @Test
+    @DisplayName("publicarComunicado debe reenviar la petición al microservicio de comunicación")
+    void testPublicarComunicado() {
+        Map<String, Object> payload = Map.of("titulo", "Aviso", "contenido", "Prueba", "autorId", "DOCENTE", "destinatario", "GENERAL");
+        when(client.llamarConCircuitBreaker(eq("communication-service"), eq("http://localhost:8083/api/comunicados"), any()))
+                .thenReturn(Map.of("id", 3));
+
+        ResponseEntity<?> respuesta = dashboardController.publicarComunicado(payload);
+
+        assertEquals(HttpStatus.OK, respuesta.getStatusCode());
+        verify(client, times(1)).llamarConCircuitBreaker(eq("communication-service"), eq("http://localhost:8083/api/comunicados"), any());
+    }
+
+        @Test
+        @DisplayName("crearEvaluacion debe reenviar la petición al microservicio académico")
+        void testCrearEvaluacion() {
+                Map<String, Object> payload = Map.of(
+                                "nombre", "Prueba de Historia",
+                                "fecha", "2026-07-20",
+                                "asignatura", Map.of("id", 2L)
+                );
+                when(client.llamarConCircuitBreaker(eq("academic-service"), eq("http://localhost:8081/api/evaluaciones"), any()))
+                                .thenReturn(Map.of("id", 7));
+
+                ResponseEntity<?> respuesta = dashboardController.crearEvaluacion(payload);
+
+                assertEquals(HttpStatus.OK, respuesta.getStatusCode());
+                verify(client, times(1)).llamarConCircuitBreaker(eq("academic-service"), eq("http://localhost:8081/api/evaluaciones"), any());
+        }
+
+    @Test
+    @DisplayName("registrarNota debe reenviar la petición al microservicio académico")
+    void testRegistrarNota() {
+        Map<String, Object> payload = Map.of(
+                "valor", 6.5,
+                "estudiante", Map.of("id", 1L),
+                "evaluacion", Map.of("id", 2L)
+        );
+        when(client.llamarConCircuitBreaker(eq("academic-service"), eq("http://localhost:8081/api/notas"), any()))
+                .thenReturn(Map.of("id", 4));
+
+        ResponseEntity<?> respuesta = dashboardController.registrarNota(payload);
+
+        assertEquals(HttpStatus.OK, respuesta.getStatusCode());
+        verify(client, times(1)).llamarConCircuitBreaker(eq("academic-service"), eq("http://localhost:8081/api/notas"), any());
+    }
 }

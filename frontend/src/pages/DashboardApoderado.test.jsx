@@ -42,7 +42,11 @@ describe('DashboardApoderado Component', () => {
         obtenerToken.mockReturnValue(`header.${payload}.signature`);
         
         getDashboardEstudiante.mockResolvedValueOnce({
-            notas: [{ id: 1, valor: 6.5 }]
+            notas: [
+                { id: 1, valor: 6.5, evaluacion: { nombre: 'Prueba 1', asignatura: { nombre: 'Matemáticas' } } },
+                { id: 2, valor: 5.5, evaluacion: { nombre: 'Prueba 2', asignatura: { nombre: 'Matemáticas' } } },
+                { id: 3, valor: 7.0, evaluacion: { nombre: 'Ensayo', asignatura: { nombre: 'Lenguaje y Comunicación' } } }
+            ]
         });
 
         render(<BrowserRouter><DashboardApoderado /></BrowserRouter>);
@@ -54,16 +58,19 @@ describe('DashboardApoderado Component', () => {
         // Verifica que se llame con el primer ID automáticamente
         await waitFor(() => {
             expect(getDashboardEstudiante).toHaveBeenCalledWith(10);
+            expect(screen.getByText('Matemáticas')).toBeInTheDocument();
+            expect(screen.getByText('Promedio: 6.0')).toBeInTheDocument();
         });
 
         // Click al segundo estudiante
         getDashboardEstudiante.mockResolvedValueOnce({
-             notas: [{ id: 2, valor: 7.0 }]
+               notas: [{ id: 2, valor: 7.0, evaluacion: { nombre: 'Prueba 3', asignatura: { nombre: 'Historia y Geografía' } } }]
         });
         fireEvent.click(screen.getByText('Estudiante 20'));
 
         await waitFor(() => {
             expect(getDashboardEstudiante).toHaveBeenCalledWith(20);
+            expect(screen.getByText('Historia y Geografía')).toBeInTheDocument();
         });
     });
 });

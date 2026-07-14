@@ -31,7 +31,11 @@ describe('DashboardEstudiante Component', () => {
 
     it('debe renderizar los datos del estudiante (promedio y asistencia)', async () => {
         const mockData = {
-            notas: [{ valor: 6.0 }, { valor: 7.0 }], // Promedio 6.5
+            notas: [
+                { valor: 6.0, evaluacion: { nombre: 'Prueba 1', asignatura: { nombre: 'Matemáticas' } } },
+                { valor: 7.0, evaluacion: { nombre: 'Prueba 2', asignatura: { nombre: 'Matemáticas' } } },
+                { valor: 5.0, evaluacion: { nombre: 'Lectura', asignatura: { nombre: 'Lenguaje y Comunicación' } } }
+            ],
             historialAsistencias: [{ estado: 'PRESENTE' }, { estado: 'AUSENTE' }], // 50%
             comunicados: [{ titulo: 'Comunicado 1' }]
         };
@@ -40,8 +44,12 @@ describe('DashboardEstudiante Component', () => {
         render(<BrowserRouter><DashboardEstudiante /></BrowserRouter>);
 
         await waitFor(() => {
-            expect(screen.getByText('6.5')).toBeInTheDocument(); // Promedio calculado
+            expect(screen.getByText('Promedio general: 6.0')).toBeInTheDocument(); // Promedio general calculado
             expect(screen.getByText('50%')).toBeInTheDocument(); // Asistencia calculada
+            expect(screen.getByText('Matemáticas')).toBeInTheDocument();
+            expect(screen.getByText('Lenguaje y Comunicación')).toBeInTheDocument();
+            expect(screen.getByText('Promedio: 6.5')).toBeInTheDocument();
+            expect(screen.getByText('Promedio: 5.0')).toBeInTheDocument();
         });
     });
 });

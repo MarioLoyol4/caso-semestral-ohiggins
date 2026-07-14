@@ -8,7 +8,14 @@ import {
     getDashboardEstudiante,
     getMiPerfil,
     getDashboardCurso,
-    getEstudiantesApoderado
+    getAsignaturas,
+    getEvaluaciones,
+    getEstudiantesApoderado,
+    registrarAsistencia,
+    registrarAnotacion,
+    publicarComunicado,
+    crearEvaluacion,
+    registrarNota
 } from './api';
 
 const BFF_URL = 'http://localhost:8080';
@@ -132,6 +139,28 @@ describe('API Services (api.js)', () => {
             });
         });
 
+        it('getAsignaturas solicita el catálogo de asignaturas', async () => {
+            await getAsignaturas();
+
+            expect(fetch).toHaveBeenCalledWith(`${BFF_URL}/api/bff/dashboard/asignaturas`, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer mock-jwt-token'
+                }
+            });
+        });
+
+        it('getEvaluaciones solicita el catálogo de evaluaciones', async () => {
+            await getEvaluaciones();
+
+            expect(fetch).toHaveBeenCalledWith(`${BFF_URL}/api/bff/dashboard/evaluaciones`, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer mock-jwt-token'
+                }
+            });
+        });
+
         it('getEstudiantesApoderado llama a la ruta correcta', async () => {
             await getEstudiantesApoderado(9);
 
@@ -140,6 +169,71 @@ describe('API Services (api.js)', () => {
                     'Content-Type': 'application/json',
                     'Authorization': 'Bearer mock-jwt-token'
                 }
+            });
+        });
+
+        it('registrarAsistencia realiza una petición POST al BFF', async () => {
+            await registrarAsistencia({ estudianteId: 1, fecha: '2026-07-14', estado: 'PRESENTE' });
+
+            expect(fetch).toHaveBeenCalledWith(`${BFF_URL}/api/bff/dashboard/asistencias`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer mock-jwt-token'
+                },
+                body: JSON.stringify({ estudianteId: 1, fecha: '2026-07-14', estado: 'PRESENTE' })
+            });
+        });
+
+        it('registrarAnotacion realiza una petición POST al BFF', async () => {
+            await registrarAnotacion({ estudianteId: 1, tipo: 'POSITIVA', descripcion: 'Buen trabajo', fecha: '2026-07-14' });
+
+            expect(fetch).toHaveBeenCalledWith(`${BFF_URL}/api/bff/dashboard/anotaciones`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer mock-jwt-token'
+                },
+                body: JSON.stringify({ estudianteId: 1, tipo: 'POSITIVA', descripcion: 'Buen trabajo', fecha: '2026-07-14' })
+            });
+        });
+
+        it('publicarComunicado realiza una petición POST al BFF', async () => {
+            await publicarComunicado({ titulo: 'Aviso', contenido: 'Prueba', autorId: 'DOCENTE', destinatario: 'GENERAL' });
+
+            expect(fetch).toHaveBeenCalledWith(`${BFF_URL}/api/bff/dashboard/comunicados`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer mock-jwt-token'
+                },
+                body: JSON.stringify({ titulo: 'Aviso', contenido: 'Prueba', autorId: 'DOCENTE', destinatario: 'GENERAL' })
+            });
+        });
+
+        it('crearEvaluacion realiza una petición POST al BFF', async () => {
+            await crearEvaluacion({ nombre: 'Prueba de Historia', fecha: '2026-07-20', asignatura: { id: 2 } });
+
+            expect(fetch).toHaveBeenCalledWith(`${BFF_URL}/api/bff/dashboard/evaluaciones`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer mock-jwt-token'
+                },
+                body: JSON.stringify({ nombre: 'Prueba de Historia', fecha: '2026-07-20', asignatura: { id: 2 } })
+            });
+        });
+
+        it('registrarNota realiza una petición POST al BFF', async () => {
+            await registrarNota({ valor: 6.5, estudiante: { id: 1 }, evaluacion: { id: 2 } });
+
+            expect(fetch).toHaveBeenCalledWith(`${BFF_URL}/api/bff/dashboard/notas`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer mock-jwt-token'
+                },
+                body: JSON.stringify({ valor: 6.5, estudiante: { id: 1 }, evaluacion: { id: 2 } })
             });
         });
     });

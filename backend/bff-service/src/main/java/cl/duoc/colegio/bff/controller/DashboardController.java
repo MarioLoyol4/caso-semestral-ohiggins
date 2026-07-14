@@ -5,11 +5,14 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -99,5 +102,92 @@ public class DashboardController {
 
         return ResponseEntity.ok(respuesta);
     }
+
+        @GetMapping("/asignaturas")
+        @PreAuthorize("hasAnyRole('ADMIN', 'DOCENTE')")
+        public ResponseEntity<?> listarAsignaturas() {
+                return ResponseEntity.ok(client.llamarSeguro("academic-service", academicUrl + "/api/asignaturas"));
+        }
+
+        @GetMapping("/evaluaciones")
+        @PreAuthorize("hasAnyRole('ADMIN', 'DOCENTE')")
+        public ResponseEntity<?> listarEvaluaciones() {
+                return ResponseEntity.ok(client.llamarSeguro("academic-service", academicUrl + "/api/evaluaciones"));
+        }
+
+        @PostMapping("/asistencias")
+        @PreAuthorize("hasAnyRole('ADMIN', 'DOCENTE')")
+        public ResponseEntity<?> registrarAsistencia(@RequestBody Map<String, Object> asistencia) {
+                try {
+                        Object respuesta = client.llamarConCircuitBreaker(
+                                        "attendance-service",
+                                        attendanceUrl + "/api/asistencias",
+                                        asistencia);
+                        return ResponseEntity.ok(respuesta);
+                } catch (Exception e) {
+                        return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE)
+                                        .body(Map.of("error", "No se pudo registrar la asistencia"));
+                }
+        }
+
+        @PostMapping("/anotaciones")
+        @PreAuthorize("hasAnyRole('ADMIN', 'DOCENTE')")
+        public ResponseEntity<?> registrarAnotacion(@RequestBody Map<String, Object> anotacion) {
+                try {
+                        Object respuesta = client.llamarConCircuitBreaker(
+                                        "attendance-service",
+                                        attendanceUrl + "/api/anotaciones",
+                                        anotacion);
+                        return ResponseEntity.ok(respuesta);
+                } catch (Exception e) {
+                        return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE)
+                                        .body(Map.of("error", "No se pudo registrar la anotación"));
+                }
+        }
+
+        @PostMapping("/comunicados")
+        @PreAuthorize("hasAnyRole('ADMIN', 'DOCENTE')")
+        public ResponseEntity<?> publicarComunicado(@RequestBody Map<String, Object> comunicado) {
+                try {
+                        Object respuesta = client.llamarConCircuitBreaker(
+                                        "communication-service",
+                                        communicationUrl + "/api/comunicados",
+                                        comunicado);
+                        return ResponseEntity.ok(respuesta);
+                } catch (Exception e) {
+                        return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE)
+                                        .body(Map.of("error", "No se pudo publicar el comunicado"));
+                }
+        }
+
+        @PostMapping("/evaluaciones")
+        @PreAuthorize("hasAnyRole('ADMIN', 'DOCENTE')")
+        public ResponseEntity<?> crearEvaluacion(@RequestBody Map<String, Object> evaluacion) {
+                try {
+                        Object respuesta = client.llamarConCircuitBreaker(
+                                        "academic-service",
+                                        academicUrl + "/api/evaluaciones",
+                                        evaluacion);
+                        return ResponseEntity.ok(respuesta);
+                } catch (Exception e) {
+                        return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE)
+                                        .body(Map.of("error", "No se pudo crear la evaluación"));
+                }
+        }
+
+            @PostMapping("/notas")
+            @PreAuthorize("hasAnyRole('ADMIN', 'DOCENTE')")
+            public ResponseEntity<?> registrarNota(@RequestBody Map<String, Object> nota) {
+                    try {
+                            Object respuesta = client.llamarConCircuitBreaker(
+                                            "academic-service",
+                                            academicUrl + "/api/notas",
+                                            nota);
+                            return ResponseEntity.ok(respuesta);
+                    } catch (Exception e) {
+                            return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE)
+                                            .body(Map.of("error", "No se pudo registrar la nota"));
+                    }
+            }
 
 }

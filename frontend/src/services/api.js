@@ -53,6 +53,65 @@ export const getDashboardCurso = async (id) => {
     return res.json();
 };
 
+export const getAsignaturas = async () => {
+    const res = await fetch(`${BFF_URL}/api/bff/dashboard/asignaturas`, {
+        headers: headers()
+    });
+    return res.json();
+};
+
+export const getEvaluaciones = async () => {
+    const res = await fetch(`${BFF_URL}/api/bff/dashboard/evaluaciones`, {
+        headers: headers()
+    });
+    return res.json();
+};
+
+export const registrarAsistencia = async (datos) => {
+    const res = await fetch(`${BFF_URL}/api/bff/dashboard/asistencias`, {
+        method: 'POST',
+        headers: headers(),
+        body: JSON.stringify(datos)
+    });
+    return res.json();
+};
+
+export const registrarAnotacion = async (datos) => {
+    const res = await fetch(`${BFF_URL}/api/bff/dashboard/anotaciones`, {
+        method: 'POST',
+        headers: headers(),
+        body: JSON.stringify(datos)
+    });
+    return res.json();
+};
+
+export const publicarComunicado = async (datos) => {
+    const res = await fetch(`${BFF_URL}/api/bff/dashboard/comunicados`, {
+        method: 'POST',
+        headers: headers(),
+        body: JSON.stringify(datos)
+    });
+    return res.json();
+};
+
+export const crearEvaluacion = async (datos) => {
+    const res = await fetch(`${BFF_URL}/api/bff/dashboard/evaluaciones`, {
+        method: 'POST',
+        headers: headers(),
+        body: JSON.stringify(datos)
+    });
+    return res.json();
+};
+
+export const registrarNota = async (datos) => {
+    const res = await fetch(`${BFF_URL}/api/bff/dashboard/notas`, {
+        method: 'POST',
+        headers: headers(),
+        body: JSON.stringify(datos)
+    });
+    return res.json();
+};
+
 export const getEstudiantesApoderado = async (apoderadoId) => {
     const res = await fetch(`${BFF_URL}/api/academic/apoderados/${apoderadoId}/estudiantes`, {
         headers: headers()
